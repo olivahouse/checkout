@@ -19,7 +19,7 @@ const currencyCode = parse(window.location.search).currency || EUR;
 const strings = getStrings(languageCode);
 
 const App = () => {
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(0);
   const [pack, setPack] = useState(null);
   const [priceId, setPriceId] = useState(null);
   const [couponId, setCouponId] = useState(null);
