@@ -1,8 +1,9 @@
 .viewport {
   background: #f7f7f5;
   bottom: 0;
+  display: flex;
+  flex-direction: column;
   left: 0;
-  overflow: scroll;
   position: fixed;
   right: 0;
   top: 0;
@@ -11,25 +12,104 @@
 .logo {
   display: block;
   height: 30px;
-  margin: 4vw auto;
+  margin: 6vw auto;
 }
 
 .subtitle {
-  margin: 8vw auto;
-  max-width: 310px;
+  margin: 8vw auto 6vw;
+  max-width: 330px;
   text-align: center;
 }
 
-.panesContainer {
+.panes {
+  flex-grow: 1;
+  position: relative;
   width: 100%;
 }
 
-.panes {
-  display: flex;
+.pane {
+  height: 100%;
+  overflow: scroll;
+  position: absolute;
+  top: 0;
+  transition:
+    left 1s cubic-bezier(0.76, 0, 0.24, 1),
+    opacity 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+  width: 100%;
 }
 
-.pane {
-  flex-basis: 100%;
-  flex-grow: 0;
-  flex-shrink: 0;
+.pane.left {
+  left: -100%;
+  opacity: 0;
+}
+
+.pane.middle {
+  left: 0;
+  opacity: 1;
+}
+
+.pane.right {
+  left: 100%;
+  opacity: 0;
+}
+
+.backButton {
+  cursor: pointer;
+  padding-left: 36px;
+  position: relative;
+  text-align: left;
+}
+
+.backButton::before {
+  content: " ";
+  border-left: 2px solid #20333a;
+  border-bottom: 2px solid #20333a;
+  height: 6px;
+  left: 20px;
+  position: absolute;
+  top: 9px;
+  transform: rotate(45deg);
+  width: 6px;
+}
+
+.stripeContainer {
+  margin: 0 auto;
+}
+
+.thanks {
+  margin: 16vw auto;
+  max-width: 290px;
+}
+
+.thanks img {
+  display: block;
+  margin: 16vw auto;
+}
+
+@media screen and (min-width: 400px) {
+  .logo {
+    margin: 4vw auto;
+  }
+
+  .subtitle {
+    margin: 4vw auto;
+  }
+
+  .thanks {
+    margin: 6vw auto;
+  }
+
+  .thanks img {
+    margin: 8vw auto;
+  }
+}
+
+@media screen and (min-width: 901px) {
+  .backButton {
+    max-width: 600px;
+  }
+
+  .stripeContainer {
+    max-width: 620px;
+  }
 }

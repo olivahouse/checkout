@@ -7,8 +7,7 @@ export const Pane = ({
   children,
   showOnStep,
   step,
-}) =>
-  (
+}) => (
     <div
       className={getClassNames(
         styles.pane,
