@@ -77,13 +77,13 @@
 }
 
 .thanks {
-  margin: 16vw auto;
+  margin: 16vw auto 0;
   max-width: 290px;
 }
 
 .thanks img {
   display: block;
-  margin: 16vw auto;
+  margin: 16vw auto 0;
 }
 
 @media screen and (min-width: 400px) {
@@ -96,11 +96,11 @@
   }
 
   .thanks {
-    margin: 6vw auto;
+    margin: 6vw auto 0;
   }
 
   .thanks img {
-    margin: 8vw auto;
+    margin: 8vw auto 0;
   }
 }
 

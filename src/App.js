@@ -74,6 +74,7 @@ const App = () => {
           <div className={styles.stripeContainer}>
             <Stripe
               couponId={couponId}
+              isNewMember={false}
               languageCode={languageCode}
               onFinish={handleFinish}
               pack={pack}
