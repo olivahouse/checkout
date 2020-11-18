@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://checkout.oliva.house/",
   "dependencies": {
-    "@olivahouse/price": "^0.1.11",
+    "@olivahouse/price": "^0.1.12",
     "@olivahouse/stripe": "^1.0.2",
     "@olivahouse/ui": "^1.0.2",
     "@testing-library/jest-dom": "^5.11.4",
