@@ -1307,10 +1307,10 @@
   dependencies:
     mkdirp "^1.0.4"
 
-"@olivahouse/price@^0.1.12":
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/@olivahouse/price/-/price-0.1.12.tgz#ef88f09e5f0bc43e238919f903a33d3472c6a63a"
-  integrity sha512-XeQM7R35SdzRc8ARd8rQuO5L3G6UyhYmPXV4OHRird9OyiLXR4dlujKgyl7P8KHBxW0yJKoW/uiZZbISpUBzzg==
+"@olivahouse/price@^0.1.15":
+  version "0.1.15"
+  resolved "https://registry.yarnpkg.com/@olivahouse/price/-/price-0.1.15.tgz#9f63b1a9851bae6a8f2c4d1afc59a07ce317b574"
+  integrity sha512-xNtqd6zhHumGuLCctBB8o+kuvz4OFsVW44ra0O0NWOKEYMgtsb/DWnQ5PGqU85Kq1lPJc+nfUqjI2+1kaiZG1w==
   dependencies:
     "@testing-library/jest-dom" "^5.11.4"
     "@testing-library/react" "^11.1.0"
