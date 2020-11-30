@@ -15,6 +15,9 @@ import styles from './styles.module.css';
 
 const languageCode = parse(window.location.search).language || EN;
 const currencyCode = parse(window.location.search).currency || EUR;
+const firstName = parse(window.location.search).firstName;
+const lastName = parse(window.location.search).lastName;
+const emailFromQuery = parse(window.location.search).email;
 
 const strings = getStrings(languageCode);
 
@@ -26,6 +29,7 @@ const App = () => {
   const [price, setPrice] = useState(null);
   const [discountedPrice, setDiscountedPrice] = useState(null);
   const [email, setEmail] = useState(null);
+  const [bookingLink, setBookingLink] = useState(null);
 
   const handleClickPrice = ({ couponId, discountedPrice, pack, price, priceId }) => {
     setPack(pack);
@@ -39,8 +43,9 @@ const App = () => {
 
   const handleClickBack = () => setStep(0);
 
-  const handleFinish = ({ email }) => {
+  const handleFinish = ({ bookingLink, email }) => {
     setEmail(email);
+    setBookingLink(bookingLink);
 
     setStep(2);
   };
@@ -74,8 +79,11 @@ const App = () => {
           <div className={styles.stripeContainer}>
             <Stripe
               couponId={couponId}
+              email={emailFromQuery}
+              firstName={firstName}
               isNewMember={false}
               languageCode={languageCode}
+              lastName={lastName}
               onFinish={handleFinish}
               pack={pack}
               priceId={priceId}
@@ -93,8 +101,11 @@ const App = () => {
             <p>{strings.YOUR_PAYMENT_WAS_SUCCESSFUL}.</p>
             <p>{strings.WE_SENT_A_PAYMENT_RECEIPT_TO} {email}</p>
             <p>{strings.WE_ADDED} {pack} {strings.SESSIONS_TO_YOUR_ACCOUNT}.</p>
-            <p>{strings.NEXT_TIME_YOU_SEE_YOUR_THERAPIST}.</p>
-            <img src="https://oliva-static-assets.s3.amazonaws.com/5f89cb3bcff467d62478fefd_abstrakt-design-212.png" alt="Focus on you"/>
+            {
+              !!bookingLink ? (<p>book now</p>) : (
+                <p>{strings.NEXT_TIME_YOU_SEE_YOUR_THERAPIST}.</p>)
+            }
+            <img src="https://oliva-static-assets.s3.amazonaws.com/5f89cb3bcff467d62478fefd_abstrakt-design-212.png" alt="Focus on you"/>)
           </div>
         </Pane>
       </div>
