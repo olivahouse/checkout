@@ -26,7 +26,15 @@ const STRINGS = {
     WE_SENT_A_PAYMENT_RECEIPT_TO: 'We just sent a payment receipt to',
     WE_ADDED: 'We added',
     SESSIONS_TO_YOUR_ACCOUNT: 'sessions to your account',
-    NEXT_TIME_YOU_SEE_YOUR_THERAPIST: 'Next time you see your therapist they will schedule your next session as usual'
+    NEXT_TIME_YOU_SEE_YOUR_THERAPIST: 'Next time you see {{0}} they will schedule your next session as usual',
+    NOW_TO_PICK_A_TIME: 'All that’s left is to pick a time for your next session{{0}}, then you’re all done.',
+    PICK_A_TIME: 'Pick a time',
+    YOUR_THERAPIST: 'your therapist',
+    WITH: 'with',
+    ALL_DONE: 'All done!',
+    YOU_WILL_RECEIVE_AN_EMAIL: 'You will receive an email{{0}} shortly with all the details of your next session.',
+    TAKE_CARE: 'Take care.',
+    FROM: 'from',
   },
   es: {
     AND: 'y',
@@ -39,7 +47,6 @@ const STRINGS = {
     I_AGREE_TO_THE: 'Estoy de acuerdo con los',
     LAST_NAME: 'Apellido',
     PAY: 'Finalizar',
-    NOW_TO_PICK_A_TIME: 'Ahora vamos a reservar una fecha para tu sesión de afinidad, y ya habremos acabado.',
     PLEASE_SEND_ME_NEWS: 'Recibir noticias, articulos y contenido sobre Oliva',
     PRIVACY_POLICY: 'política de privacidad',
     SESSIONS: 'sesiones',
@@ -49,14 +56,21 @@ const STRINGS = {
     WE_NEED_YOUR_EMAIL: 'Necesitamos tu email',
     WE_NEED_YOUR_FIRST_NAME: 'Necesitamos tu nombre',
     WE_NEED_YOUR_LAST_NAME: 'Necesitamos tu apellido',
-    WE_SENT_AN_EMAIL_TO: 'Acabamos de enviarte un email a {{0}} con todos los detalles de tu sesión de afinidad, y un recibo del pago.',
     YOUR_EMAIL_DOESNT_LOOK_RIGHT: 'Tu email no parece correcto',
     THANKS: '¡Gracias!',
     YOUR_PAYMENT_WAS_SUCCESSFUL: 'Tu pago se ha realizado con éxito',
     WE_SENT_A_PAYMENT_RECEIPT_TO: 'Acabamos de enviarte un recibo del pago a',
     WE_ADDED: 'Hemos añadido',
     SESSIONS_TO_YOUR_ACCOUNT: 'sesiones a tu cuenta',
-    NEXT_TIME_YOU_SEE_YOUR_THERAPIST: 'En tu próxima visita con tu terapeuta podrás programar tu siguiente sesión sin problemas'
+    NEXT_TIME_YOU_SEE_YOUR_THERAPIST: 'En tu próxima visita con {{0}} podrás programar tu siguiente sesión sin problemas',
+    NOW_TO_PICK_A_TIME: 'Ahora vamos a reservar una fecha para tu proxima sesión{{0}}, y ya habremos acabado.',
+    PICK_A_TIME: 'Elegir una fecha',
+    YOUR_THERAPIST: 'tu terapeuta',
+    WITH: 'con',
+    ALL_DONE: '¡Todo listo!',
+    YOU_WILL_RECEIVE_AN_EMAIL: 'Recibirás un correo electrónico{{0}} en breve con todos los detalles de tu próxima sesión.',
+    TAKE_CARE: 'Cuídate.',
+    FROM: 'de',
   }
 }
 

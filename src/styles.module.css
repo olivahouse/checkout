@@ -86,6 +86,17 @@
   margin: 16vw auto 0;
 }
 
+.booking {
+  background: #fff;
+  border: none;
+  display: block;
+  height: 99%;
+  margin: 0 auto;
+  max-height: 620px;
+  max-width: 620px;
+  width: 100%;
+}
+
 @media screen and (min-width: 400px) {
   .logo {
     margin: 4vw auto;

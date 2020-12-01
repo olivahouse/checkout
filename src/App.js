@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState, useCallback, useEffect } from 'react';
 import { Stripe } from '@olivahouse/stripe';
 import { parse } from 'query-string';
 import { Pricing, adaptPrice } from '@olivahouse/price';
+import { Button } from '@olivahouse/ui';
 import getClassNames from 'classnames';
 
 import '@olivahouse/ui/lib/styles.css';
@@ -10,6 +11,7 @@ import '@olivahouse/stripe/lib/styles.css';
 
 import { Pane } from './Pane';
 import { getStrings } from './utils/getStrings';
+import { getInterpolatedString } from './utils/getInterpolatedString';
 import { EN, EUR, STRIPE_PUBLIC_KEY } from './constants';
 import styles from './styles.module.css';
 
@@ -30,6 +32,24 @@ const App = () => {
   const [discountedPrice, setDiscountedPrice] = useState(null);
   const [email, setEmail] = useState(null);
   const [bookingLink, setBookingLink] = useState(null);
+  const [therapistFirstName, setTherapistFirstName] = useState(null);
+
+  const handleMessage = useCallback(
+    (event) => {
+      if (!event || !event.data || !event.origin.includes('acuity')) return;
+
+      if (event.data.includes('acuity-appointment-scheduled')) {
+        setStep(4);
+      }
+    },
+    []
+  );
+
+  useEffect(() => {
+    window.addEventListener('message', handleMessage);
+
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
 
   const handleClickPrice = ({ couponId, discountedPrice, pack, price, priceId }) => {
     setPack(pack);
@@ -43,12 +63,15 @@ const App = () => {
 
   const handleClickBack = () => setStep(0);
 
-  const handleFinish = ({ bookingLink, email }) => {
+  const handleFinish = ({ bookingLink, email, therapistFirstName, ...rest }) => {
     setEmail(email);
     setBookingLink(bookingLink);
+    setTherapistFirstName(therapistFirstName);
 
     setStep(2);
   };
+
+  const handleClickPickATime = () => setStep(3);
 
   return (
     <div className={styles.viewport}>
@@ -101,11 +124,28 @@ const App = () => {
             <p>{strings.YOUR_PAYMENT_WAS_SUCCESSFUL}.</p>
             <p>{strings.WE_SENT_A_PAYMENT_RECEIPT_TO} {email}</p>
             <p>{strings.WE_ADDED} {pack} {strings.SESSIONS_TO_YOUR_ACCOUNT}.</p>
-            {
-              !!bookingLink ? (<p>book now</p>) : (
-                <p>{strings.NEXT_TIME_YOU_SEE_YOUR_THERAPIST}.</p>)
-            }
-            <img src="https://oliva-static-assets.s3.amazonaws.com/5f89cb3bcff467d62478fefd_abstrakt-design-212.png" alt="Focus on you"/>)
+            {!!bookingLink ? (
+              <Fragment>
+                <p>{getInterpolatedString(strings.NOW_TO_PICK_A_TIME, [therapistFirstName ? ` ${strings.WITH} ${therapistFirstName}` : ''])}</p>
+                <Button onClick={handleClickPickATime}>{strings.PICK_A_TIME}</Button>
+              </Fragment>
+            ) : (
+              <Fragment>
+                <p>{getInterpolatedString(strings.NEXT_TIME_YOU_SEE_YOUR_THERAPIST, [therapistFirstName || strings.YOUR_THERAPIST])}.</p>
+                <img src="https://oliva-static-assets.s3.amazonaws.com/5f89cb3bcff467d62478fefd_abstrakt-design-212.png" alt="Focus on you"/>
+              </Fragment>
+            )}
+          </div>
+        </Pane>
+        <Pane showOnStep={3} step={step}>
+          <iframe className={styles.booking} src={bookingLink} title="booking-form" />
+        </Pane>
+        <Pane showOnStep={4} step={step}>
+          <div className={styles.thanks}>
+            <p>{strings.ALL_DONE}</p>
+            <p>{getInterpolatedString(strings.YOU_WILL_RECEIVE_AN_EMAIL, [therapistFirstName ? ` ${strings.FROM} ${therapistFirstName}` : ''])}</p>
+            <p>{strings.TAKE_CARE}</p>
+            <img src="https://oliva-static-assets.s3.amazonaws.com/5f89cb3bcff467d62478fefd_abstrakt-design-212.png" alt="Focus on you"/>
           </div>
         </Pane>
       </div>

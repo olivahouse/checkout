@@ -1323,10 +1323,10 @@
     react-scripts "4.0.0"
     web-vitals "^0.2.4"
 
-"@olivahouse/stripe@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@olivahouse/stripe/-/stripe-1.0.5.tgz#3fd967db8a8142902369b75dcf4d7164135714f1"
-  integrity sha512-Mo2f0mmN4sUc/4JaZxzjofMyY6CbnIJDW49lLrO7t9AUSkaz9rnscF1rM6efhL1x5eFaHdS2lwcNUmhTlC0cCg==
+"@olivahouse/stripe@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@olivahouse/stripe/-/stripe-1.0.6.tgz#db79a05d34ad4f829781cc4ae23e4793cd2cc889"
+  integrity sha512-B5ejJWLtCuMyCw0UWCrcyKIbsD3AB+KXHLz57wIg/B4A7wRbfV5PW/ZQcDTnKAbuGm1MHd3Osp67x0w93w8Mlg==
   dependencies:
     "@olivahouse/ui" "^1.0.2"
     "@stripe/react-stripe-js" "^1.1.2"
